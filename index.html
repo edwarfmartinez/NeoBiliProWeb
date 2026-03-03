@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="NeoBili Pro delivers professional neonatal bilirubin decision support based on AAP and NICE guidelines."
+    />
+    <title>NeoBili Pro | Neonatal Bilirubin Decision Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f6f8f7;
+        --bg-alt: #ffffff;
+        --ink: #17211f;
+        --muted: #495a56;
+        --line: #d3ddd9;
+        --brand: #007d6e;
+        --brand-strong: #005f56;
+        --accent: #bfe9df;
+        --card: #ffffff;
+        --shadow: 0 20px 50px rgba(7, 42, 37, 0.12);
+        --radius-lg: 26px;
+        --radius-md: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Outfit", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 12%, #e5f5f1 0, transparent 36%),
+          radial-gradient(circle at 88% 3%, #d6ede8 0, transparent 24%),
+          linear-gradient(180deg, #f8fbfa 0%, #eef4f2 100%);
+        line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: linear-gradient(rgba(23, 33, 31, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(23, 33, 31, 0.04) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 65%);
+      }
+
+      .shell {
+        width: min(1160px, 92vw);
+        margin: 0 auto;
+        padding: 1.25rem 0 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        font-family: "Sora", sans-serif;
+        font-weight: 600;
+      }
+
+      .brand-dot {
+        width: 0.72rem;
+        height: 0.72rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #00a287, #006e62);
+        box-shadow: 0 0 0 8px rgba(0, 125, 110, 0.12);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(8px);
+      }
+
+      .contact-btn,
+      .store-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+      }
+
+      .contact-btn {
+        padding: 0.68rem 1rem;
+        color: #fff;
+        background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+        font-weight: 500;
+        box-shadow: 0 12px 26px rgba(0, 95, 86, 0.24);
+      }
+
+      .contact-btn:hover,
+      .store-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(211, 221, 217, 0.8);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        padding: clamp(1.25rem, 2.8vw, 2.2rem);
+        display: grid;
+        grid-template-columns: 1.45fr 1fr;
+        gap: 1.8rem;
+        align-items: center;
+        animation: rise 720ms ease both;
+      }
+
+      .hero h1 {
+        font-family: "Sora", sans-serif;
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        line-height: 1.1;
+        margin: 0.35rem 0 0.8rem;
+        letter-spacing: -0.02em;
+      }
+
+      .hero p {
+        color: var(--muted);
+        margin: 0;
+        font-size: clamp(1rem, 1.6vw, 1.1rem);
+      }
+
+      .hero-logo {
+        width: min(250px, 62vw);
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 12px 24px rgba(7, 42, 37, 0.14));
+      }
+
+      .cta-card {
+        border-radius: var(--radius-md);
+        border: 1px solid var(--line);
+        background: var(--bg-alt);
+        padding: 1rem;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .cta-card h2 {
+        margin: 0;
+        font-family: "Sora", sans-serif;
+        font-size: 1.1rem;
+      }
+
+      .store-btn {
+        background: #0d1111;
+        padding: 0.2rem 0.48rem;
+        width: fit-content;
+        box-shadow: 0 10px 20px rgba(13, 17, 17, 0.24);
+      }
+
+      .store-btn img {
+        display: block;
+        height: 56px;
+        width: auto;
+      }
+
+      .qr-wrap {
+        display: grid;
+        gap: 0.4rem;
+        width: fit-content;
+      }
+
+      .qr-wrap img {
+        width: 150px;
+        height: 150px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+      }
+
+      .qr-wrap span {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .section {
+        margin-top: 1.15rem;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(211, 221, 217, 0.9);
+        border-radius: var(--radius-lg);
+        box-shadow: 0 10px 24px rgba(7, 42, 37, 0.08);
+        padding: clamp(1rem, 2.8vw, 1.8rem);
+        animation: rise 780ms ease both;
+      }
+
+      .section h2 {
+        margin: 0 0 0.45rem;
+        font-family: "Sora", sans-serif;
+        font-size: clamp(1.15rem, 2.4vw, 1.65rem);
+      }
+
+      .section p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .cards {
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        background: linear-gradient(180deg, #ffffff, #f8fbfa);
+      }
+
+      .card h3 {
+        margin: 0;
+        font-family: "Sora", sans-serif;
+        font-size: 1.03rem;
+      }
+
+      .card ul {
+        margin: 0.7rem 0 0;
+        padding-left: 1rem;
+      }
+
+      .card li {
+        margin: 0.4rem 0;
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 0.9rem;
+      }
+
+      .chip {
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        padding: 0.35rem 0.7rem;
+        background: #fff;
+        font-size: 0.88rem;
+      }
+
+      .footer {
+        margin-top: 1.15rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(211, 221, 217, 0.9);
+        background: rgba(255, 255, 255, 0.85);
+        box-shadow: 0 10px 24px rgba(7, 42, 37, 0.08);
+        padding: clamp(1rem, 2.5vw, 1.5rem);
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .legal-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+
+      .legal-links a {
+        color: var(--brand-strong);
+        text-underline-offset: 2px;
+      }
+
+      .disclaimer {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .desktop-only {
+        display: block;
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          flex-wrap: wrap;
+        }
+
+        .desktop-only {
+          display: none;
+        }
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>NeoBili Pro</span>
+          <span class="pill">AAP + NICE Guideline Support</span>
+        </div>
+        <a class="contact-btn" href="mailto:edwarmartinez@yahoo.com?subject=NeoBili%20Pro%20Inquiry">Contact us</a>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <img class="hero-logo" src="NeoBiliProLogo.png" alt="NeoBili Pro logo" />
+          <h1 id="hero-title">Professional neonatal bilirubin decision support.</h1>
+          <p>
+            NeoBili Pro is designed for pediatricians, neonatologists, residents, and healthcare
+            professionals who need accurate, guideline-based assessment of neonatal
+            hyperbilirubinemia.
+          </p>
+        </div>
+
+        <aside class="cta-card" aria-label="Download options">
+          <h2>Get NeoBili Pro</h2>
+          <p>
+            Structured clinical support for threshold interpretation, nomogram review, patient
+            tracking, and report generation.
+          </p>
+          <a class="store-btn" href="https://apps.apple.com/app/6759757585" target="_blank" rel="noopener noreferrer">
+            <img src="Download.png" alt="Download from the App Store" />
+          </a>
+          <div class="qr-wrap desktop-only">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fapps.apple.com%2Fapp%2F6759757585"
+              alt="QR code for NeoBili Pro App Store page"
+            />
+            <span>Scan on desktop to open the App Store link on mobile.</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <h2 id="features-title">Clinical Decision Support</h2>
+        <p>
+          All calculations are based on bundled reference datasets and operate fully offline.
+        </p>
+        <div class="cards">
+          <article class="card">
+            <h3>Core assessment tools</h3>
+            <ul>
+              <li>AAP and NICE guideline selection</li>
+              <li>Gestational age-based threshold curves</li>
+              <li>Neurotoxicity risk factor toggle</li>
+              <li>Age-in-hours calculation from birth</li>
+              <li>Rate-of-rise calculation when two measurements are available</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Treatment band classification</h3>
+            <ul>
+              <li>Below phototherapy threshold</li>
+              <li>At/above phototherapy threshold</li>
+              <li>At/above exchange transfusion threshold</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Interactive Nomogram</h3>
+            <ul>
+              <li>Dynamic plotting of bilirubin values</li>
+              <li>Visual comparison with treatment thresholds</li>
+              <li>Horizontal scrolling and zoom</li>
+              <li>Measurement callouts with age, value, and date</li>
+              <li>Clear differentiation of phototherapy and exchange levels</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Patient Tracking (Pro)</h3>
+            <ul>
+              <li>Create and manage patient profiles</li>
+              <li>Store multiple bilirubin measurements</li>
+              <li>Automatic recalculation of treatment classification</li>
+              <li>Longitudinal trend visualization</li>
+              <li>Clinical notes support</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Professional PDF Reports (Pro)</h3>
+            <ul>
+              <li>Patient demographics and measurement summary</li>
+              <li>Risk assessment classification and threshold comparison</li>
+              <li>Nomogram visualization</li>
+              <li>References and disclaimer section</li>
+              <li>Secure export through share sheet</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Offline & Private</h3>
+            <ul>
+              <li>No backend servers</li>
+              <li>No cloud dependency</li>
+              <li>All data stored locally on device</li>
+              <li>Designed for clinical environments</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="audience-title">
+        <h2 id="audience-title">Who Is It For?</h2>
+        <div class="chip-row" aria-label="Intended audience">
+          <span class="chip">Pediatricians</span>
+          <span class="chip">Neonatologists</span>
+          <span class="chip">NICU teams</span>
+          <span class="chip">Medical residents</span>
+          <span class="chip">Healthcare trainees</span>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="disclaimer">
+          NeoBili Pro is intended as an educational clinical reference tool and does not replace
+          professional medical judgment.
+        </p>
+        <nav class="legal-links" aria-label="Legal links">
+          <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+          <a href="https://docs.google.com/document/d/10v7gTGLZm66NpYrg3Wx8HSQUvhftCLYrvd6pVsoK-8o/edit?tab=t.0" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          <a href="mailto:edwarmartinez@yahoo.com?subject=NeoBili%20Pro%20Support">Contact us</a>
+        </nav>
+      </footer>
+    </main>
+  </body>
+</html>
