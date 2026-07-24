@@ -193,13 +193,22 @@
         object-fit: contain;
       }
 
+      .download-options {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.25rem;
+      }
+
       .qr-wrap {
         display: grid;
         gap: 0.4rem;
         width: fit-content;
+        text-align: center;
       }
 
       .qr-wrap img {
+        display: block;
         width: 150px;
         height: 150px;
         border-radius: 12px;
@@ -207,8 +216,12 @@
       }
 
       .qr-wrap span {
+        display: block;
+        width: 150px;
+        margin-top: 0.4rem;
         color: var(--muted);
         font-size: 0.88rem;
+        line-height: 1.4;
       }
 
       .section {
@@ -346,7 +359,7 @@
           <span>NeoBili Pro</span>
           <span class="pill">AAP + NICE Guideline Support</span>
         </div>
-        <a class="contact-btn" href="mailto:valioralabs@gmail.com?subject=NeoBili%20Pro%20Inquiry">Contact us</a>
+        <a class="contact-btn" href="mailto:support@valioralabs.com?subject=NeoBili%20Pro%20Inquiry">Contact us</a>
       </header>
 
       <section class="hero" aria-labelledby="hero-title">
@@ -366,15 +379,17 @@
             Structured clinical support for threshold interpretation, nomogram review, patient
             tracking, and report generation.
           </p>
-          <a class="store-btn" href="https://apps.apple.com/app/6759757585" target="_blank" rel="noopener noreferrer">
-            <img src="Download.png" alt="Download from the App Store" />
-          </a>
-          <div class="qr-wrap desktop-only">
-            <img
-              src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fapps.apple.com%2Fapp%2F6759757585"
-              alt="QR code for NeoBili Pro App Store page"
-            />
-            <span>Scan on desktop to open the App Store link on mobile.</span>
+          <div class="download-options">
+            <a class="store-btn" href="https://apps.apple.com/app/6759757585" target="_blank" rel="noopener noreferrer">
+              <img src="Download.png" alt="Download from the App Store" />
+            </a>
+            <div class="qr-wrap desktop-only">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fapps.apple.com%2Fapp%2F6759757585"
+                alt="QR code for NeoBili Pro App Store page"
+              />
+              <span>Scan on desktop to open the App Store link on mobile.</span>
+            </div>
           </div>
         </aside>
       </section>
@@ -464,7 +479,7 @@
         <nav class="legal-links" aria-label="Legal links">
           <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
           <a href="privacy.html">Privacy Policy</a>
-          <a href="mailto:valioralabs@gmail.com?subject=NeoBili%20Pro%20Support">Contact us</a>
+          <a href="mailto:support@valioralabs.com?subject=NeoBili%20Pro%20Support">Contact us</a>
         </nav>
       </footer>
     </main>
