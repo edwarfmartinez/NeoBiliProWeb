@@ -1,4 +1,56 @@
 (() => {
+  const firebaseConfig = {
+    apiKey: "AIzaSyB_c6lVAGx_nZpGTFQEhWY1JbgJxRBlxV8",
+    authDomain: "neobili-pro.firebaseapp.com",
+    projectId: "neobili-pro",
+    storageBucket: "neobili-pro.firebasestorage.app",
+    messagingSenderId: "1008285189914",
+    appId: "1:1008285189914:web:e641c332a2db90c0970ea3",
+    measurementId: "G-05F34150RG",
+  };
+
+  let sendAnalyticsEvent = null;
+  const pendingAnalyticsEvents = [];
+
+  const cleanAnalyticsParams = (detail) =>
+    Object.fromEntries(
+      Object.entries(detail).filter(([, value]) => value !== undefined && value !== null),
+    );
+
+  const track = (eventName, detail = {}) => {
+    const params = cleanAnalyticsParams(detail);
+
+    if (sendAnalyticsEvent) {
+      sendAnalyticsEvent(eventName, params);
+      return;
+    }
+
+    pendingAnalyticsEvents.push({ eventName, params });
+  };
+
+  const initializeFirebaseAnalytics = async () => {
+    try {
+      const [{ initializeApp }, { getAnalytics, isSupported, logEvent }] = await Promise.all([
+        import("https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js"),
+        import("https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js"),
+      ]);
+
+      if (!(await isSupported())) return;
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      sendAnalyticsEvent = (eventName, params) => logEvent(analytics, eventName, params);
+
+      pendingAnalyticsEvents.splice(0).forEach(({ eventName, params }) => {
+        sendAnalyticsEvent(eventName, params);
+      });
+    } catch (error) {
+      console.warn("Firebase Analytics could not be initialized.", error);
+    }
+  };
+
+  void initializeFirebaseAnalytics();
+
   const menuButton = document.querySelector("[data-menu-toggle]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
 
@@ -24,11 +76,6 @@
       if (window.innerWidth > 900) closeMenu();
     });
   }
-
-  window.dataLayer = window.dataLayer || [];
-  const track = (eventName, detail = {}) => {
-    window.dataLayer.push({ event: eventName, ...detail });
-  };
 
   document.querySelectorAll("[data-app-store]").forEach((link) => {
     link.addEventListener("click", () => {
