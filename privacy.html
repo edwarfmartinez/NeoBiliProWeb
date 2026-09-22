@@ -2,183 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Privacy Policy for NeoBili Pro - Neonatal Bilirubin Decision Support App"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Privacy Policy | NeoBili Pro</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Sora:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #f6f8f7;
-        --bg-alt: #ffffff;
-        --ink: #17211f;
-        --muted: #495a56;
-        --line: #d3ddd9;
-        --brand: #007d6e;
-        --brand-strong: #005f56;
-        --accent: #bfe9df;
-        --card: #ffffff;
-        --shadow: 0 20px 50px rgba(7, 42, 37, 0.12);
-        --radius-lg: 26px;
-        --radius-md: 18px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Outfit", "Segoe UI", sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 12% 12%, #e5f5f1 0, transparent 36%),
-          radial-gradient(circle at 88% 3%, #d6ede8 0, transparent 24%),
-          linear-gradient(180deg, #f8fbfa 0%, #eef4f2 100%);
-        line-height: 1.6;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        background-image: linear-gradient(rgba(23, 33, 31, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(23, 33, 31, 0.04) 1px, transparent 1px);
-        background-size: 32px 32px;
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 65%);
-      }
-
-      .shell {
-        width: min(800px, 92vw);
-        margin: 0 auto;
-        padding: 2rem 1rem 4rem;
-        position: relative;
-        z-index: 1;
-      }
-
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--brand-strong);
-        text-decoration: none;
-        font-weight: 500;
-        margin-bottom: 2rem;
-        transition: color 180ms ease;
-      }
-
-      .back-link:hover {
-        color: var(--brand);
-      }
-
-      .privacy-content {
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid rgba(211, 221, 217, 0.8);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow);
-        padding: 2rem;
-      }
-
-      .privacy-content h1 {
-        font-family: "Sora", sans-serif;
-        font-size: 2rem;
-        margin: 0 0 1rem;
-        color: var(--ink);
-      }
-
-      .privacy-content h2 {
-        font-family: "Sora", sans-serif;
-        font-size: 1.4rem;
-        margin: 2rem 0 1rem;
-        color: var(--ink);
-      }
-
-      .privacy-content p {
-        margin: 0 0 1rem;
-        color: var(--muted);
-      }
-
-      .privacy-content ul {
-        margin: 1rem 0;
-        padding-left: 1.5rem;
-        color: var(--muted);
-      }
-
-      .privacy-content li {
-        margin: 0.5rem 0;
-      }
-
-      .last-updated {
-        color: var(--muted);
-        font-size: 0.9rem;
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--line);
-      }
-
-      @media (max-width: 600px) {
-        .shell {
-          padding: 1rem 0.5rem 3rem;
-        }
-
-        .privacy-content {
-          padding: 1.5rem;
-        }
-
-        .privacy-content h1 {
-          font-size: 1.6rem;
-        }
-
-        .privacy-content h2 {
-          font-size: 1.2rem;
-        }
-      }
-    </style>
+    <meta name="description" content="Privacy policy for NeoBili Pro, including local data storage and offline operation." />
+    <link rel="canonical" href="https://neobilipro.valioralabs.com/privacy.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Privacy Policy | NeoBili Pro" />
+    <meta property="og:description" content="How NeoBili Pro handles local clinical data and offline operation." />
+    <meta property="og:url" content="https://neobilipro.valioralabs.com/privacy.html" />
+    <meta property="og:image" content="https://neobilipro.valioralabs.com/NeoBiliProLogo.png" />
+    <link rel="icon" href="assets/icon.webp" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <main class="shell">
-      <a href="index.html" class="back-link">
-        ← Back to NeoBili Pro
-      </a>
+  <body data-page="privacy_policy">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header"><div class="container nav-shell"><a class="brand" href="/" aria-label="NeoBili Pro home"><img src="assets/icon.webp" width="38" height="38" alt="" /><span>NeoBili Pro</span></a><nav class="desktop-nav" aria-label="Primary navigation"><a href="/#product">Product</a><a href="/#resources">Clinical Resources</a><a href="/#guidelines">Guidelines</a><a href="/#faq">FAQ</a></nav><a class="nav-store" href="https://apps.apple.com/app/6759757585" target="_blank" rel="noopener noreferrer" data-app-store data-section="navigation" data-position="header">View on the App Store</a><button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button></div><nav class="mobile-nav" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu><a href="/#product">Product</a><a href="/#resources">Clinical Resources</a><a href="/#guidelines">Guidelines</a><a href="/#faq">FAQ</a><a class="nav-store" href="https://apps.apple.com/app/6759757585" target="_blank" rel="noopener noreferrer" data-app-store data-section="navigation" data-position="mobile_menu">View on the App Store</a></nav></header>
 
-      <div class="privacy-content">
-        <h1>Privacy Policy</h1>
+    <main class="legal-page" id="main-content">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="legal-updated">Last updated: March 26, 2026</p>
+      <p>This Privacy Policy describes how NeoBili Pro ("we", "us", or "our") handles information when you use the mobile application.</p>
 
-        <p>This Privacy Policy describes how NeoBili Pro ("we", "us", or "our") handles information when you use our mobile application.</p>
+      <h2>Information We Collect</h2>
+      <p>NeoBili Pro is designed with privacy in mind and operates entirely offline. We do not collect, store, or transmit personal information or patient data.</p>
 
-        <h2>Information We Collect</h2>
-        <p>NeoBili Pro is designed with privacy in mind and operates entirely offline. We do not collect, store, or transmit any personal information or patient data.</p>
+      <h2>Data Storage</h2>
+      <p>All data entered into the app, including patient information and clinical measurements, is stored locally on your device only. This data does not leave your device and is not accessible to us or third parties through NeoBili Pro.</p>
 
-        <h2>Data Storage</h2>
-        <p>All data entered into the app, including patient information and clinical measurements, is stored locally on your device only. This data never leaves your device and is not accessible to us or any third parties.</p>
+      <h2>No Internet Connectivity Required</h2>
+      <p>NeoBili Pro functions offline and does not require internet connectivity for its clinical calculations. No patient data is sent to or received from external servers.</p>
 
-        <h2>No Internet Connectivity Required</h2>
-        <p>NeoBili Pro functions completely offline and does not require or use internet connectivity. No data is sent to or received from external servers.</p>
+      <h2>Third-Party Services</h2>
+      <p>The app and this website may link to external services, such as the App Store or official guideline sources. Interactions with those services are subject to their respective privacy policies.</p>
 
-        <h2>Third-Party Services</h2>
-        <p>The app may link to external services (such as the App Store) for updates or support, but these interactions are subject to the respective service's privacy policies, not ours.</p>
+      <h2>Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Changes will be reflected on this page or in an app update, as applicable.</p>
 
-        <h2>Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Any changes will be reflected in app updates.</p>
-
-        <h2>Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy, please contact us at: <a href="mailto:support@valioralabs.com">support@valioralabs.com</a></p>
-
-        <p class="last-updated">Last updated: March 26, 2026</p>
-      </div>
+      <h2>Contact Us</h2>
+      <p>For questions about this Privacy Policy, contact <a href="mailto:support@valioralabs.com">support@valioralabs.com</a>.</p>
     </main>
+
+    <footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="/"><img src="assets/icon.webp" width="38" height="38" alt="" /><span>NeoBili Pro</span></a><p>Fast, guideline-based neonatal bilirubin assessment for clinical practice.</p></div><div class="footer-group"><h2>Product</h2><div class="footer-links"><a href="/#product">Overview</a><a href="/#faq">FAQ</a><a href="https://apps.apple.com/app/6759757585" target="_blank" rel="noopener noreferrer" data-app-store data-section="footer" data-position="footer">App Store</a></div></div><div class="footer-group"><h2>Clinical</h2><div class="footer-links"><a href="/#resources">Clinical Resources</a><a href="aap-2022-bilirubin-thresholds/">AAP 2022</a><a href="nice-cg98-bilirubin/">NICE CG98</a></div></div><div class="footer-group"><h2>Legal &amp; support</h2><div class="footer-links"><a href="privacy.html" aria-current="page">Privacy Policy</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Terms of Use</a><a href="medical-disclaimer.html">Medical Disclaimer</a><a href="mailto:support@valioralabs.com?subject=NeoBili%20Pro%20Support">Support</a></div></div></div><div class="footer-bottom"><p>NeoBili Pro is a clinical support tool and does not replace independent medical judgment. AAP and NICE do not endorse NeoBili Pro.</p><span>© <span data-year>2026</span> Valiora Labs</span></div></div></footer>
+    <script src="script.js" defer></script>
   </body>
 </html>
